@@ -1,0 +1,27 @@
+The code provided is for an Arduino-based obstacle-avoiding vehicle. It detects obstacles with ultrasonic sensors and moves the car with DC motors. Here's a quick rundown of what the code does:
+
+1. It comes with a number of libraries, including 'AFMotor' for motor control, 'NewPing' for interacting with an ultrasonic sensor, and 'Servo' for controlling a servo motor.
+
+2. It specifies the ultrasonic sensor's trigger and echo pins, as well as the maximum distance for obstacle detection and the maximum speed and speed offset for the DC motors.
+
+3. It sets up the four DC motors and a servo motor and initializes the ultrasonic sensor with the 'NewPing' library.
+
+4. In the'setup' function, the servo motor is connected to pin 10 and set to 115 degrees.
+   - To ensure an accurate initial reading, it reads the distance from the ultrasonic sensor multiple times.
+
+5. It checks the distance measured by the ultrasonic sensor in the 'loop' function. If the distance is less than or equal to 15 cm, an obstacle is close by.
+   - When an obstacle is detected, the car comes to a complete stop, moves backward for a short distance, and then comes to a complete stop again.
+   - It looks right and left with the servo motor to determine distances in those directions.
+   - To avoid the obstacle, the car turns right or left based on the distances to the right and left.
+   - If no obstacles are detected, the car will proceed.
+
+6. The 'lookRight' and 'lookLeft' functions rotate the servo motor to scan for obstacles on the right and left sides, respectively. They return the measured distance in those directions.
+
+7. The'readPing' function returns the distance from the ultrasonic sensor in centimeters. If the sensor fails to detect a distance, it returns a value of 250 cm as a default.
+
+8. Movement control functions:'moveStop' turns off all motors.
+   - The'moveForward' command accelerates the car forward.
+   -'moveBackward' accelerates the car's backward movement.
+   - The commands 'turnRight' and 'turnLeft' cause the car to turn right and left, respectively.
+
+This code governs the behavior of an obstacle-avoiding vehicle by continuously monitoring its surroundings with an ultrasonic sensor, adjusting its movement to avoid obstacles, and moving forward when there are no obstacles in its path.
